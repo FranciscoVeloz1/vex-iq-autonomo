@@ -22,7 +22,7 @@ void RobotRodillo (motor motor1, motor motor2, motor motor3, motor motor4, motor
 }
 
 // Creamos funcion para controlar el chasis
-void useChasis(directionType direccion, int vel1, int vel2, bool detener, int tiempo = 10)
+void useChasis(directionType direccion, int vel1, int vel2, bool detener = false, int tiempo = 10)
 {
   ChasisIzq.spin(direccion, vel1, percent);
   ChasisDer.spin(direccion, vel2, percent);
@@ -36,7 +36,7 @@ void useChasis(directionType direccion, int vel1, int vel2, bool detener, int ti
 }
 
 // Creamos funcion para controlar el rodillo
-void useRodillo(directionType direccion, int vel, bool detener, int tiempo = 10)
+void useRodillo(directionType direccion, int vel, bool detener = false, int tiempo = 10)
 {
   Rodillo.spin(direccion, vel, percent);
   wait(tiempo, msec);
@@ -48,7 +48,7 @@ void useRodillo(directionType direccion, int vel, bool detener, int tiempo = 10)
 }
 
 // Creamos funcion para controlar las torres
-void useTorres(directionType direccion, int vel, bool detener, int tiempo = 10)
+void useTorres(directionType direccion, int vel, bool detener = false, int tiempo = 10)
 {
   TorreIzq.spin(direccion, vel, percent);
   TorreDer.spin(direccion, vel, percent);
