@@ -1,0 +1,62 @@
+// Incluimos la librerya de IQ
+#include "iq_cpp.h"
+
+// Permitimos para un facil uso de la libreria VEX
+using namespace vex;
+
+// Definimos los motores que queremos para el robot sin importar el puerto
+motor ChasisIzq = PORT1;
+motor ChasisDer = PORT1;
+motor TorreIzq = PORT1;
+motor TorreDer = PORT1;
+motor Rodillo = PORT1;
+
+// Definimos la funcion constructora, mejor conocida como constructor
+void RobotRodillo (motor motor1, motor motor2, motor motor3, motor motor4, motor motor5) 
+{
+    ChasisIzq = motor1;
+    ChasisDer = motor2;
+    TorreIzq = motor3;
+    TorreDer = motor4;
+    Rodillo = motor5;
+}
+
+// Creamos funcion para controlar el chasis
+void useChasis(directionType direccion, int vel1, int vel2, bool detener, int tiempo = 10)
+{
+  ChasisIzq.spin(direccion, vel1, percent);
+  ChasisDer.spin(direccion, vel2, percent);
+  wait(tiempo, msec);
+
+  if (tiempo > 0 && detener)
+  {
+    ChasisIzq.stop();
+    ChasisDer.stop();
+  }
+}
+
+// Creamos funcion para controlar el rodillo
+void useRodillo(directionType direccion, int vel, bool detener, int tiempo = 10)
+{
+  Rodillo.spin(direccion, vel, percent);
+  wait(tiempo, msec);
+
+  if (tiempo > 0 && detener)
+  {
+    Rodillo.stop();
+  }
+}
+
+// Creamos funcion para controlar las torres
+void useTorres(directionType direccion, int vel, bool detener, int tiempo = 10)
+{
+  TorreIzq.spin(direccion, vel, percent);
+  TorreDer.spin(direccion, vel, percent);
+  wait(tiempo, msec);
+
+  if (tiempo > 0 && detener)
+  {
+    TorreIzq.stop();
+    TorreDer.stop();
+  }
+}
